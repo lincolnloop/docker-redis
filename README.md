@@ -1,7 +1,15 @@
-## Redis Dockerfile
-
+## Redis Dockerfile 60% smaller image on debian:wheezy
 
 This repository contains **Dockerfile** of [Redis](http://redis.io/) for [Docker](https://www.docker.com/)'s [automated build](https://registry.hub.docker.com/u/dockerfile/redis/) published to the public [Docker Hub Registry](https://registry.hub.docker.com/).
+
+The original master is based of Debian ubuntu:14.04: 473MB.
+This image is based on debian wheezy: 185MB.
+```
+$ docker images
+REPOSITORY                        TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+hmalphettes/redis                 latest              1adb1e2723d3        27 seconds ago      185.7 MB
+dockerfile/redis                  latest              755cafb337f4        20 hours ago        473 MB
+```
 
 
 ### Base Docker Image
