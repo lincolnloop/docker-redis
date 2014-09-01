@@ -14,7 +14,7 @@ dockerfile/redis                  latest              755cafb337f4        20 hou
 
 ### Base Docker Image
 
-* [dockerfile/ubuntu](http://dockerfile.github.io/#/ubuntu)
+* [google/debian:wheezy](https://github.com/GoogleCloudPlatform/debian-docker)
 
 
 ### Installation
