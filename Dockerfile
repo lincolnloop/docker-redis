@@ -1,18 +1,20 @@
 # Pull base image.
 FROM debian:jessie
 
+ENV REDIS_VERSION 2.8.19
+
 # Install Redis.
 RUN apt-get update && apt-get -y install less curl net-tools build-essential && \
   cd /tmp && \
-  curl -O http://download.redis.io/redis-stable.tar.gz && \
-  tar xvzf redis-stable.tar.gz && \
-  cd redis-stable && \
+  curl -O http://download.redis.io/releases/redis-${REDIS_VERSION}.tar.gz && \
+  tar xvzf redis-${REDIS_VERSION}.tar.gz && \
+  cd redis-${REDIS_VERSION} && \
   make && \
   make install && \
   cp -f src/redis-sentinel /usr/local/bin && \
   mkdir -p /etc/redis && \
   cp -f *.conf /etc/redis && \
-  rm -rf /tmp/redis-stable* && \
+  rm -rf /tmp/redis-${REDIS_VERSION}* && \
   sed -i 's/^\(bind .*\)$/# \1/' /etc/redis/redis.conf && \
   sed -i 's/^\(daemonize .*\)$/# \1/' /etc/redis/redis.conf && \
   sed -i 's/^\(dir .*\)$/# \1\ndir \/data/' /etc/redis/redis.conf && \
